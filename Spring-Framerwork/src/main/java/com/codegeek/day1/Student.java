@@ -15,9 +15,14 @@ public class Student {
 
     private Phone phone;
 
+    public void setPhone(Phone phone) {
+        this.phone = phone;
+    }
+
     public Student(Phone phone) {
         this.phone = phone;
     }
+
 
     public String getAddress() {
         return address;

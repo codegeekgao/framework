@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="messageService" class="com.codegeek.day2.MessageServiceImpl">
+        <constructor-arg name="name" value="张三"/>
+        <constructor-arg name="age" value="23"/>
+    </bean>
+
+    <!--构造器注入-->
+    <bean id="messageSender" class="com.codegeek.day2.MessageSender">
+        <constructor-arg name="messageService" ref="messageService"/>
+    </bean>
+</beans>
