@@ -12,4 +12,58 @@
     <bean id="messageSender" class="com.codegeek.day2.MessageSender">
         <constructor-arg name="messageService" ref="messageService"/>
     </bean>
+
+    <bean id="messageSender1" class="com.codegeek.day2.MessageSender">
+        <property name="list">
+            <list>
+                <value>我是messageSender的list数据</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="messageSender2" class="com.codegeek.day2.MessageSender">
+        <property name="set">
+            <set>
+                <value>我是messageSender的set数据1</value>
+                <value>我是messageSender的set数据2</value>
+            </set>
+        </property>
+    </bean>
+
+    <bean id="student" class="com.codegeek.day1.Student">
+        <property name="name" value="张三"/>
+        <property name="age" value="23"/>
+        <property name="gender" value="男"/>
+        <property name="address" value="中国"/>
+    </bean>
+
+    <!--静态工厂方法参数赋值-->
+    <bean id="iphone11" class="com.codegeek.day1.Phone" factory-method="instance">
+        <constructor-arg name="brandName" value="iphone 11"/>
+        <constructor-arg name="price" value="5999"/>
+        <constructor-arg name="producePlace" value="china"/>
+    </bean>
+
+    <bean id="messageSender3" class="com.codegeek.day2.MessageSender">
+        <property name="map">
+            <map>
+                <entry key="小学生" value="小明"/>
+                <entry key="china">
+                    <map>
+                        <entry key="hubei" value="wuhan～加油"/>
+                    </map>
+                </entry>
+                <entry key="student" value-ref="iphone11"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="messageSender4" class="com.codegeek.day2.MessageSender">
+       <property name="properties">
+           <props>
+               <prop key="driver">com.mysql.jdbc.Driver</prop>
+           </props>
+       </property>
+    </bean>
+
 </beans>
