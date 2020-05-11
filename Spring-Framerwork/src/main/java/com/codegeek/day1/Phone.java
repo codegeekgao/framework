@@ -15,8 +15,8 @@ public class Phone {
     private Phone() {
     }
 
-    public static Phone instance() {
-        return new Phone();
+    public static Phone instance(String brandName,Double price,String producePlace) {
+        return new Phone(brandName,price,producePlace);
     }
 
     public Phone getPhone() {

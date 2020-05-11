@@ -37,7 +37,12 @@
         <constructor-arg value="北京" index="2"/>
     </bean>
 
-    <bean id="iphone1" class="com.codegeek.day1.Phone" factory-method="instance"/>
+    <!--静态工厂方法参数赋值-->
+    <bean id="iphone1" class="com.codegeek.day1.Phone" factory-method="instance">
+        <constructor-arg name="brandName" value="iphone 11"/>
+        <constructor-arg name="price" value="5999"/>
+        <constructor-arg name="producePlace" value="china"/>
+    </bean>
 
     <bean id="iphone2" class="com.codegeek.day1.Phone"/>
     <!--通过工厂实例化对象-->
