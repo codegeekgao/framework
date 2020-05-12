@@ -1,5 +1,6 @@
 package com.codegeek.day2;
 
+import com.codegeek.day1.Phone;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;

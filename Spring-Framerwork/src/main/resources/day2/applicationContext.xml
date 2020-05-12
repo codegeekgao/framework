@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
 
     <bean id="messageService" class="com.codegeek.day2.MessageServiceImpl">
         <constructor-arg name="name" value="张三"/>
@@ -14,12 +14,28 @@
     </bean>
 
     <bean id="messageSender1" class="com.codegeek.day2.MessageSender">
-        <property name="list">
-            <list>
-                <value>我是messageSender的list数据</value>
-            </list>
+        <property name="list" ref="list1">
         </property>
     </bean>
+
+    <util:list id="list1">
+        <value>123</value>
+        <value>456</value>
+    </util:list>
+
+    <util:map id="map1">
+        <entry key="student" value-ref="iphone11"/>
+    </util:map>
+
+    <util:set id="set1">
+        <value>123</value>
+        <value>456</value>
+    </util:set>
+
+    <util:properties id="properties1">
+        <prop key="123">456</prop>
+    </util:properties>
+
 
     <bean id="messageSender2" class="com.codegeek.day2.MessageSender">
         <property name="set">

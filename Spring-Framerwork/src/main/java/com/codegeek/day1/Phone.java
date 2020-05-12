@@ -11,15 +11,8 @@ public class Phone {
     private Double price;
     private String producePlace;
 
+    public Phone() {
 
-    private Phone() {
     }
 
-    public static Phone instance(String brandName,Double price,String producePlace) {
-        return new Phone(brandName,price,producePlace);
-    }
-
-    public Phone getPhone() {
-        return new Phone();
-    }
 }
