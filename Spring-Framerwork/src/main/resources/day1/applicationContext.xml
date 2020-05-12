@@ -53,7 +53,6 @@
     <!-- 实例工厂
     factory-method ：指定工厂静态方法
     -->
-
     <bean id="iphone2" class="com.codegeek.day1.InstanceFactory" factory-method="instance">
         <constructor-arg value="iphone11 pro"/>
         <constructor-arg value="9999"/>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
 
     <bean id="messageService" class="com.codegeek.day2.MessageServiceImpl">
@@ -54,7 +55,7 @@
     </bean>
 
     <!--静态工厂方法参数赋值-->
-    <bean id="iphone11" class="com.codegeek.day1.Phone" factory-method="instance">
+    <bean id="iphone11" class="com.codegeek.day1.InstanceFactory" factory-method="instance">
         <constructor-arg name="brandName" value="iphone 11"/>
         <constructor-arg name="price" value="5999"/>
         <constructor-arg name="producePlace" value="china"/>
