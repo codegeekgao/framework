@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -12,6 +13,7 @@ import lombok.ToString;
 public class LazyBean {
 
     private Boolean flag;
+
 
     public void setFlag(Boolean flag) {
         System.out.println("设置了flag："+flag);
