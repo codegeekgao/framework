@@ -7,4 +7,5 @@
         <bean class="com.codegeek.day4.BeanLife" init-method="SpringInit" destroy-method="SpringDestroy"/>
        <!-- <bean class="com.codegeek.day4.PostConstructDemo"/>-->
         <!--<bean class="com.codegeek.day4.SpringInitDemo" init-method="SpringInit" destroy-method="SpringDestroy"/>-->
+        <bean class="com.codegeek.day4.SpringUtils" lazy-init="false" />
 </beans>
