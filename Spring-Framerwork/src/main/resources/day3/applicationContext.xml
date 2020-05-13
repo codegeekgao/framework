@@ -3,14 +3,23 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
        xmlns:c="http://www.springframework.org/schema/c"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-<!--    使用p命名空间代替property属性赋值-->
+    <!--    使用p命名空间代替property属性赋值-->
     <bean id="user" class="com.codegeek.day3.User" p:email="codegeek@163.com" p:userName="codegeek1"/>
     <!--    使用c命名空间代替<constructor-arg> 标签属性赋值-->
     <bean id="user1" class="com.codegeek.day3.User" c:email="codegeek@gmail.com" c:userName="codegeek2" c:age="23"/>
 
-    <bean id="person" class="com.codegeek.day3.Person" abstract="true" p:userName="father" p:age="35" p:email="father@163.com"/>
+    <bean id="person" class="com.codegeek.day3.Person" abstract="true" p:userName="father" p:age="35"
+          p:email="father@163.com"/>
 
-    <!--当容器获取bean才进行创建-->
-    <bean id="user2" class="com.codegeek.day3.User" scope="prototype"  parent="person"/>
+    <!--
+    prototype:多实例时，当容器获取bean才进行创建
+    singleton:单实例，容器启动时就创建好Bean
+    -->
+    <bean id="user2" class="com.codegeek.day3.User" scope="prototype" parent="person"/>
 
+    <bean id="lazy1" class="com.codegeek.day3.LazyBean" p:flag="true" lazy-init="true"/>
+
+    <bean id="lazy2" class="com.codegeek.day3.LazyBean" p:flag="false" lazy-init="false"/>
+
+    <bean id="reference" class="com.codegeek.day3.ReferenceBean" p:lazyBean-ref="lazy1" lazy-init="false"/>
 </beans>

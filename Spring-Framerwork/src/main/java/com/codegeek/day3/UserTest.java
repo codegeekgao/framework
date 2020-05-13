@@ -29,4 +29,14 @@ public class UserTest {
         User user2 = applicationContext.getBean("user1", User.class);
         System.out.println(user1 == user2);
     }
+
+    @Test
+    public void testLazy() {
+       /* User user3 = applicationContext.getBean("user3", User.class);
+        User user4 = applicationContext.getBean("user4", User.class);
+        System.out.println(user3==user4);*/
+
+        ReferenceBean reference = applicationContext.getBean("reference", ReferenceBean.class);
+        System.out.println(reference);
+    }
 }

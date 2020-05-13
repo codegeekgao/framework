@@ -5,20 +5,23 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.StringJoiner;
+
 @NoArgsConstructor
-@Getter
-@Setter
 public class User extends Person {
 
     public User(String userName, String email, Integer age) {
-        System.out.println("实例化配置"+userName);
-       this.setUserName(userName);
-       this.setEmail(email);
-       this.setAge(age);
+        this.setUserName(userName);
+        this.setEmail(email);
+        this.setAge(age);
+       // System.out.println("实例化配置" + this.getUserName());
     }
 
 
-
+    @Override
+    public void setUserName(String userName) {
+        System.out.println("设置了username："+userName);
+        super.setUserName(userName);
+    }
 
     @Override
     public String toString() {
