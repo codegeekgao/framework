@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/data/jpa https://www.springframework.org/schema/data/jpa/spring-jpa.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+        <context:component-scan base-package="com.codegeek.day6"/>
+
+        <!--扫包-->
+        <context:component-scan base-package="com.codegeek.day6"/>
+       <!-- 引用properties资源文件(jdbc)-->
+        <bean id="propertyConfigurer"
+              class="com.codegeek.day5.EncryptPropertySourcesPlaceholderConfigurer">
+                <property name="ignoreUnresolvablePlaceholders" value="true" />
+                <property name="locations">
+                        <list>
+                                <value>classpath:day6/jdbc.properties</value>
+                        </list>
+                </property>
+        </bean>
+        <!--<context:property-placeholder location="day6/jdbc1.properties"/>-->
+        <!--配置连接池-->
+        <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+                <property name="driverClassName" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+        </bean>
+
+
+
+        <!--工厂类对象  本地容器实力管理工厂对象-->
+        <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+                <property name="dataSource" ref="dataSource"/>      <!--引用数据源-->
+                <property name="packagesToScan" value="com.codegeek.day6.model"/>  <!--扫描entity层对象-->
+                <!--配置jpa供应商适配器-->
+                <property name="jpaVendorAdapter">
+                        <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+                                <!-- 自动建表 -->
+                                <property name="generateDdl" value="true" />
+                                <property name="database" value="MYSQL" />
+                                <property name="databasePlatform" value="org.hibernate.dialect.MySQL5Dialect" />
+                                <property name="showSql" value="true" />
+                        </bean>
+                </property>
+        </bean>
+        <!--配置事务    jpa事务管理-->
+        <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+                <property name="entityManagerFactory" ref="entityManagerFactory"/>   <!--引用工厂对象-->
+        </bean>
+        <!--事务驱动-->
+        <tx:advice id="txAdvice" transaction-manager="transactionManager">
+                <tx:attributes>
+                        <tx:method name="get*" read-only="true"/>
+                        <tx:method name="find*" read-only="true"/>
+                        <tx:method name="*" propagation="REQUIRED"/>
+                </tx:attributes>
+        </tx:advice>
+
+        <!--配置切面-->
+        <aop:config>
+                <aop:pointcut id="pointcut" expression="execution(* com.codegeek.day6.service.*.*(..))"/>
+                <aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut"/>
+        </aop:config>
+        <!--dao层-->
+        <jpa:repositories base-package="com.codegeek.day6.dao"
+                          transaction-manager-ref="transactionManager"
+                          entity-manager-factory-ref="entityManagerFactory"
+        />
+</beans>
