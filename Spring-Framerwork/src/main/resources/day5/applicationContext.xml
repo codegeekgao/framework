@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+        <bean id="order" class="com.codegeek.day5.Order" p:orderName="手机" p:price="6999" init-method="init" destroy-method="destroy"/>
+        <bean id="demo1" class="com.codegeek.day5.BeanPostProcessorDemo"/>
+
+        <bean id="propertyConfigurer"
+              class="com.codegeek.day5.EncryptPropertySourcesPlaceholderConfigurer">
+                <property name="ignoreUnresolvablePlaceholders" value="true" />
+                <property name="locations">
+                        <list>
+                                <value>classpath:day5/jdbc.properties</value>
+                        </list>
+                </property>
+        </bean>
+</beans>
