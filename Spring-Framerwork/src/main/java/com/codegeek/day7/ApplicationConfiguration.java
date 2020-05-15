@@ -1,10 +1,11 @@
 package com.codegeek.day7;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.*;
 
 @Configuration
+@ComponentScan("com.codegeek.day7")
+@Import(DataConfiguration.class)
+@ImportResource(locations = {"classpath:day7/annotationContext.xml"})
 public class ApplicationConfiguration {
 
     @Bean(name = "student2")

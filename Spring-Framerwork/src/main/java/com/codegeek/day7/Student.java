@@ -7,11 +7,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import javax.annotation.Resource;
 
 
-@Getter
+
 @NoArgsConstructor
 @AllArgsConstructor
-@Setter
-@ToString
+@Data
 public class Student {
     private String name;
     private Integer age;
