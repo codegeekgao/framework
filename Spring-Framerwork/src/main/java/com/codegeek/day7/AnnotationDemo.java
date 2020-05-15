@@ -1,5 +1,6 @@
 package com.codegeek.day7;
 
+import com.codegeek.day7.profile.DataConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import javax.sql.DataSource;
 
 @ContextConfiguration(locations = "classpath:day7/*.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -37,10 +40,20 @@ public class AnnotationDemo {
         annotationConfigApplicationContext.refresh();
         Student bean = annotationConfigApplicationContext.getBean(Student.class);
         Student bean1 = annotationConfigApplicationContext.getBean(Student.class);
-        System.out.println("bean= "+bean);
+        System.out.println("bean= " + bean);
         System.out.println(bean1 == bean);
 
         System.out.println(student == bean);
 
+    }
+
+    @Test
+    public void profile() {
+        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
+        applicationContext.getEnvironment().setActiveProfiles("dev");
+        applicationContext.register(ApplicationConfiguration.class);
+        applicationContext.refresh();
+        DataConfig dataConfig = applicationContext.getBean("dataConfig", DataConfig.class);
+        System.out.println("\n" + dataConfig);
     }
 }
