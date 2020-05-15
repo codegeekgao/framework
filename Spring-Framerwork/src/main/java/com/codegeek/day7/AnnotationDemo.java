@@ -1,6 +1,7 @@
 package com.codegeek.day7;
 
 import com.codegeek.day7.profile.DataConfig;
+import com.codegeek.day7.properties.DeployConfiguration;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,5 +56,12 @@ public class AnnotationDemo {
         applicationContext.refresh();
         DataConfig dataConfig = applicationContext.getBean("dataConfig", DataConfig.class);
         System.out.println("\n" + dataConfig);
+    }
+
+    @Test
+    public void testPropertySource() {
+        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(ApplicationConfiguration.class);
+        DeployConfiguration configuration = applicationContext.getBean("deployConfiguration", DeployConfiguration.class);
+        System.out.println("\n"+configuration);
     }
 }
