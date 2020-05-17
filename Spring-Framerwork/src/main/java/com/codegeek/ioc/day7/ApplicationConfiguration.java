@@ -5,7 +5,7 @@ import org.springframework.context.annotation.*;
 @Configuration
 @ComponentScan("com.codegeek.ioc.day7")
 @Import(DataConfiguration.class)
-@ImportResource(locations = {"classpath:day7/annotationContext.xml"})
+@ImportResource(locations = {"classpath:ioc/day7/annotationContext.xml"})
 public class ApplicationConfiguration {
 
     @Bean(name = "student2")

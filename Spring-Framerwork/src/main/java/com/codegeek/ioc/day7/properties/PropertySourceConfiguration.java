@@ -7,7 +7,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 
 @Configuration
-@PropertySource(value = "classpath:day7/customize.properties")
+@PropertySource(value = "classpath:ioc/day7/customize.properties")
 public class PropertySourceConfiguration {
 
     @Autowired

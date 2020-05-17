@@ -8,7 +8,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.junit.runner.RunWith;
 
-@ContextConfiguration(locations = {"classpath:day2/*.xml"})
+@ContextConfiguration(locations = {"classpath:ioc/day2/*.xml"})
 @RunWith(SpringJUnit4ClassRunner.class)
 public class SpringTest {
 
@@ -41,7 +41,7 @@ public class SpringTest {
 
 
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext("day2/applicationContext.xml");
+        ClassPathXmlApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext("ioc/day2/applicationContext.xml");
         MessageSender messageSender = classPathXmlApplicationContext.getBean("messageSender", MessageSender.class);
         messageSender.printMessage();
     }

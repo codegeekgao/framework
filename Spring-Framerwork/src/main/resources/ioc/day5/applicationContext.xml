@@ -10,7 +10,7 @@
                 <property name="ignoreUnresolvablePlaceholders" value="true" />
                 <property name="locations">
                         <list>
-                                <value>classpath:day5/jdbc.properties</value>
+                                <value>classpath:ioc/day5day5/jdbc.properties</value>
                         </list>
                 </property>
         </bean>

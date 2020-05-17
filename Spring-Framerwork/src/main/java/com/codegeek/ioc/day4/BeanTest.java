@@ -7,7 +7,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-@ContextConfiguration(locations = {"classpath:day4/*.xml"})
+@ContextConfiguration(locations = {"classpath:ioc/day4/*.xml"})
 @RunWith(SpringJUnit4ClassRunner.class)
 public class BeanTest {
 

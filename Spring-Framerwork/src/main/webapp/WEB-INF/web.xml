@@ -23,7 +23,7 @@
 
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:day6/annotationContext.xml</param-value>
+        <param-value>classpath:ioc/day6/annotationContext.xml</param-value>
     </context-param>
     <!-- 配置ContextLoaderListener表示，该工程要以spring的方式启动。启动时会默认在/WEB-INF目录下查找applicationContext.xml
 作为spring容器的配置文件，该文件里可以初始化一些bean -->
@@ -59,7 +59,7 @@
         <init-param>
             <param-name>contextConfigLocation</param-name>
             <!--<param-value>/WEB-INF/classes/spring-mvc-servlet.xml</param-value>-->
-            <param-value>classpath:day6/spring-mvc.xml</param-value>
+            <param-value>classpath:ioc/day6/spring-mvc.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
