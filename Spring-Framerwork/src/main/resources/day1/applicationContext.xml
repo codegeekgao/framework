@@ -3,34 +3,34 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="student1" class="com.codegeek.day1.Student">
+    <bean id="student1" class="com.codegeek.ioc.day1.Student">
         <property name="address" value="上海"/>
         <property name="name" value="小明"/>
         <property name="age" value="23"/>
         <property name="gender" value="男"/>
     </bean>
 
-    <bean id="student2" class="com.codegeek.day1.Student">
+    <bean id="student2" class="com.codegeek.ioc.day1.Student">
         <property name="address" value="上海"/>
         <property name="name" value="小明"/>
         <property name="age" value="23"/>
         <property name="gender" value="男"/>
     </bean>
 
-    <bean id="student3" class="com.codegeek.day1.Student">
+    <bean id="student3" class="com.codegeek.ioc.day1.Student">
         <constructor-arg value="张三"/>
         <constructor-arg value="23"/>
         <constructor-arg value="北京"/>
     </bean>
 
-    <bean id="student4" class="com.codegeek.day1.Student">
+    <bean id="student4" class="com.codegeek.ioc.day1.Student">
         <constructor-arg value="张三" index="0"/>
         <constructor-arg value="23" index="1"/>
         <constructor-arg value="男" index="3"/>
         <constructor-arg value="北京" index="2"/>
     </bean>
 
-    <bean id="student5" class="com.codegeek.day1.Student">
+    <bean id="student5" class="com.codegeek.ioc.day1.Student">
         <constructor-arg value="王武" index="0"/>
         <constructor-arg value="23" index="1"/>
         <constructor-arg value="男" index="3"/>
@@ -38,13 +38,13 @@
     </bean>
 
     <!--  工厂类-->
-    <bean id="beanFactory" class="com.codegeek.day1.InstanceFactory"/>
+    <bean id="beanFactory" class="com.codegeek.ioc.day1.InstanceFactory"/>
     <!-- 实例工厂
     factory-bean ：指定工厂实例子
     factory-method ：指定工厂方法
     -->
 
-    <bean id="phone1" class="com.codegeek.day1.Phone" factory-bean="beanFactory" factory-method="getPhone">
+    <bean id="phone1" class="com.codegeek.ioc.day1.Phone" factory-bean="beanFactory" factory-method="getPhone">
         <constructor-arg value="iphone11"/>
         <constructor-arg value="5999.3"/>
         <constructor-arg value="郑州富士康"/>
@@ -53,7 +53,7 @@
     <!-- 实例工厂
     factory-method ：指定工厂静态方法
     -->
-    <bean id="iphone2" class="com.codegeek.day1.InstanceFactory" factory-method="instance">
+    <bean id="iphone2" class="com.codegeek.ioc.day1.InstanceFactory" factory-method="instance">
         <constructor-arg value="iphone11 pro"/>
         <constructor-arg value="9999"/>
         <constructor-arg value="郑州富士康"/>

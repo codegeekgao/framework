@@ -4,17 +4,17 @@
 
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
 
-    <bean id="messageService" class="com.codegeek.day2.MessageServiceImpl">
+    <bean id="messageService" class="com.codegeek.ioc.day2.MessageServiceImpl">
         <constructor-arg name="name" value="张三"/>
         <constructor-arg name="age" value="23"/>
     </bean>
 
     <!--构造器注入-->
-    <bean id="messageSender" class="com.codegeek.day2.MessageSender">
+    <bean id="messageSender" class="com.codegeek.ioc.day2.MessageSender">
         <constructor-arg name="messageService" ref="messageService"/>
     </bean>
 
-    <bean id="messageSender1" class="com.codegeek.day2.MessageSender">
+    <bean id="messageSender1" class="com.codegeek.ioc.day2.MessageSender">
         <property name="list" ref="list1">
         </property>
     </bean>
@@ -38,7 +38,7 @@
     </util:properties>
 
 
-    <bean id="messageSender2" class="com.codegeek.day2.MessageSender">
+    <bean id="messageSender2" class="com.codegeek.ioc.day2.MessageSender">
         <property name="set">
             <set>
                 <value>我是messageSender的set数据1</value>
@@ -47,7 +47,7 @@
         </property>
     </bean>
 
-    <bean id="student" class="com.codegeek.day1.Student">
+    <bean id="student" class="com.codegeek.ioc.day1.Student">
         <property name="name" value="张三"/>
         <property name="age" value="23"/>
         <property name="gender" value="男"/>
@@ -55,13 +55,13 @@
     </bean>
 
     <!--静态工厂方法参数赋值-->
-    <bean id="iphone11" class="com.codegeek.day1.InstanceFactory" factory-method="instance">
+    <bean id="iphone11" class="com.codegeek.ioc.day1.InstanceFactory" factory-method="instance">
         <constructor-arg name="brandName" value="iphone 11"/>
         <constructor-arg name="price" value="5999"/>
         <constructor-arg name="producePlace" value="china"/>
     </bean>
 
-    <bean id="messageSender3" class="com.codegeek.day2.MessageSender">
+    <bean id="messageSender3" class="com.codegeek.ioc.day2.MessageSender">
         <property name="map">
             <map>
                 <entry key="小学生" value="小明"/>
@@ -75,7 +75,7 @@
         </property>
     </bean>
 
-    <bean id="messageSender4" class="com.codegeek.day2.MessageSender">
+    <bean id="messageSender4" class="com.codegeek.ioc.day2.MessageSender">
        <property name="properties">
            <props>
                <prop key="driver">com.mysql.jdbc.Driver</prop>

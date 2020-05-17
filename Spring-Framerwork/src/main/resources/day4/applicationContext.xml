@@ -2,10 +2,10 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-        <bean id="account" class="com.codegeek.day4.Account" p:userId="u2020123456" p:accountId="a2020123456" p:accountBalance="5000"/>
+        <bean id="account" class="com.codegeek.ioc.day4.Account" p:userId="u2020123456" p:accountId="a2020123456" p:accountBalance="5000"/>
 
-        <bean class="com.codegeek.day4.BeanLife" init-method="SpringInit" destroy-method="SpringDestroy"/>
-       <!-- <bean class="com.codegeek.day4.PostConstructDemo"/>-->
-        <!--<bean class="com.codegeek.day4.SpringInitDemo" init-method="SpringInit" destroy-method="SpringDestroy"/>-->
-        <bean class="com.codegeek.day4.SpringUtils" lazy-init="false" />
+        <bean class="com.codegeek.ioc.day4.BeanLife" init-method="SpringInit" destroy-method="SpringDestroy"/>
+       <!-- <bean class="com.codegeek.ioc.day4.PostConstructDemo"/>-->
+        <!--<bean class="com.codegeek.ioc.day4.SpringInitDemo" init-method="SpringInit" destroy-method="SpringDestroy"/>-->
+        <bean class="com.codegeek.ioc.day4.SpringUtils" lazy-init="false" />
 </beans>

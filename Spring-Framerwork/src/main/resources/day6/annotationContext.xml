@@ -5,10 +5,10 @@
        xmlns:jpa="http://www.springframework.org/schema/data/jpa" xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/data/jpa https://www.springframework.org/schema/data/jpa/spring-jpa.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
         <!--扫包-->
-        <context:component-scan base-package="com.codegeek.day6"/>
+        <context:component-scan base-package="com.codegeek.ioc.day6"/>
        <!-- 引用properties资源文件(jdbc)-->
         <bean id="propertyConfigurer"
-              class="com.codegeek.day5.EncryptPropertySourcesPlaceholderConfigurer">
+              class="com.codegeek.ioc.day5.EncryptPropertySourcesPlaceholderConfigurer">
                 <property name="ignoreUnresolvablePlaceholders" value="true" />
                 <property name="locations">
                         <list>
@@ -30,7 +30,7 @@
         <!--工厂类对象  本地容器实力管理工厂对象-->
         <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
                 <property name="dataSource" ref="dataSource"/>      <!--引用数据源-->
-                <property name="packagesToScan" value="com.codegeek.day6.model"/>  <!--扫描entity层对象-->
+                <property name="packagesToScan" value="com.codegeek.ioc.day6.model"/>  <!--扫描entity层对象-->
                 <!--配置jpa供应商适配器-->
                 <property name="jpaVendorAdapter">
                         <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
@@ -57,11 +57,11 @@
 
         <!--配置切面-->
         <aop:config>
-                <aop:pointcut id="pointcut" expression="execution(* com.codegeek.day6.service.*.*(..))"/>
+                <aop:pointcut id="pointcut" expression="execution(* com.codegeek.ioc.day6.service.*.*(..))"/>
                 <aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut"/>
         </aop:config>
         <!--dao层-->
-        <jpa:repositories base-package="com.codegeek.day6.dao"
+        <jpa:repositories base-package="com.codegeek.ioc.day6.dao"
                           transaction-manager-ref="transactionManager"
                           entity-manager-factory-ref="entityManagerFactory"
         />
