@@ -13,4 +13,9 @@ public class CalculatorImpl implements Calculator {
     public int sub(int a, int b) {
         return a - b;
     }
+
+    @Override
+    public double divide(int a, int b) {
+        return a / b;
+    }
 }

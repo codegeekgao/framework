@@ -29,8 +29,14 @@ public class AopTest {
 
     @Test
     public void testAspect() {
+        // 配置切面类IOC就生成接口的代理类否则就是基本类
+        System.out.println();
         Calculator bean = applicationContext.getBean(Calculator.class);
         System.out.println(bean.add(1, 5));
+        System.out.println("-------------------");
+        System.out.println(bean.divide(5, 0));
+        System.out.println(bean);
+        System.out.println(bean.getClass());
     }
 
 
