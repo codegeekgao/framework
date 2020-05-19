@@ -15,9 +15,11 @@ public class LogAspect {
    @Before(value = "execution(* *..aop..*(..))")
     public static void logStart(JoinPoint joinPoint) {
         Object[] args = joinPoint.getArgs();
-        //  System.out.println(joinPoint.getStaticPart()); 打印详细切入点表达式
+        // 拿到执行方法的源对象-----即切入表达式实际切入的地方并运行的地方
+       System.out.println(joinPoint.getTarget().getClass());
+       //  System.out.println(joinPoint.getStaticPart()); 打印详细切入点表达式
 
-        System.out.println("普通通知方法@before：" + joinPoint.getSignature().getName() + "日志开始了....方法参数：" + Arrays.asList(args));
+        System.out.println("LogAspect-普通通知方法@before：" + joinPoint.getSignature().getName() + "日志开始了....方法参数：" + Arrays.asList(args));
     }
     @Pointcut(value = "execution(* *..aop..*(..))")
     public void logPoint() {
@@ -27,17 +29,17 @@ public class LogAspect {
     // returning 告诉方法执行完毕后返回的值
     @AfterReturning(value = "execution(public * com.codegeek.aop.day1.CalculatorImpl.*(..))", returning = "result")
     public static void logRun(Object result) {
-        System.out.println("普通通知@AfterReturning" + "运行结果为：" + result);
+        System.out.println("LogAspect-普通通知@AfterReturning" + "运行结果为：" + result);
     }
 
     @AfterThrowing(value = "execution(public  * com.codegeek.aop.day1.Calculator.*(..))", throwing = "e")
     public static void logException(Exception e) {
-        System.out.println("普通通知@AfterThrowing出异常啦:" + e);
+        System.out.println("LogAspect-普通通知@AfterThrowing出异常啦:" + e);
     }
 
     @After(value = "execution(public  * com.codegeek.aop.day1.Calculator.*(..))")
     public void logEnd() {
-        System.out.println("普通通知@After日志结束了");
+        System.out.println("LogAspect-普通通知@After日志结束了");
     }
 
     @Around(value = "logPoint()")
