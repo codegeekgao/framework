@@ -1,5 +1,8 @@
 package com.codegeek.ioc.day2;
 
+import com.codegeek.ioc.day2.lookup.AbstractFactory;
+import com.codegeek.ioc.day2.lookup.Phone;
+import com.codegeek.ioc.day2.lookup.Product;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -37,6 +40,12 @@ public class SpringTest {
     public void testProps() {
         MessageSender messageSender = applicationContext.getBean("messageSender4", MessageSender.class);
         System.out.println(messageSender.getProperties());
+    }
+    @Test
+    public void testLookup() {
+        Product bean = (Product) applicationContext.getBean("phone");
+        System.out.println(bean);
+
     }
 
 
