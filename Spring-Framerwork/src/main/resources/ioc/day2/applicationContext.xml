@@ -8,6 +8,28 @@
 
     <context:component-scan base-package="com.codegeek.ioc.day2"/>
 
+
+    <!--
+        <bean id="phone" class="com.codegeek.ioc.day2.lookup.Phone" scope="prototype"/>
+        <bean id="computer" class="com.codegeek.ioc.day2.lookup.Computer" scope="prototype"/>
+
+        <bean class="com.codegeek.ioc.day2.lookup.AbstractFactory">
+            &lt;!&ndash;name属性指定抽象工厂的抽象方法名。而bean的值即bean的id值&ndash;&gt;
+            <lookup-method bean="phone" name="createProduct"/>
+        </bean>
+    -->
+
+    <bean id="userService" class="com.codegeek.ioc.day2.replacemethod.UserServiceImpl">
+        <replaced-method name="findUserNameById" replacer="replaceMethod">
+            <arg-type>java.lang.String</arg-type>
+        </replaced-method>
+    </bean>
+
+    <!-- ====================replace-method属性注入==================== -->
+    <bean id="replaceMethod" class="com.codegeek.ioc.day2.replacemethod.UserReplaceMethod"/>
+
+
+
     <bean id="messageService" class="com.codegeek.ioc.day2.MessageServiceImpl">
         <constructor-arg name="name" value="张三"/>
         <constructor-arg name="age" value="23"/>
@@ -80,11 +102,11 @@
     </bean>
 
     <bean id="messageSender4" class="com.codegeek.ioc.day2.MessageSender">
-       <property name="properties">
-           <props>
-               <prop key="driver">com.mysql.jdbc.Driver</prop>
-           </props>
-       </property>
+        <property name="properties">
+            <props>
+                <prop key="driver">com.mysql.jdbc.Driver</prop>
+            </props>
+        </property>
     </bean>
 
 </beans>

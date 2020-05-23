@@ -1,8 +1,8 @@
 package com.codegeek.ioc.day2;
 
 import com.codegeek.ioc.day2.lookup.AbstractFactory;
-import com.codegeek.ioc.day2.lookup.Phone;
-import com.codegeek.ioc.day2.lookup.Product;
+import com.codegeek.ioc.day2.replacemethod.UserService;
+import com.codegeek.ioc.day2.replacemethod.UserServiceImpl;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -43,10 +43,18 @@ public class SpringTest {
     }
     @Test
     public void testLookup() {
-        Product bean = (Product) applicationContext.getBean("phone");
-        System.out.println(bean);
-
+        // 获取工厂
+        System.out.println();
+        AbstractFactory bean = (AbstractFactory) applicationContext.getBean(AbstractFactory.class);
+        // 调用生产产品的方法
+        bean.createProduct();
     }
+    @Test
+    public void testReplaceMethod() {
+        UserService bean = applicationContext.getBean("userService",UserServiceImpl.class);
+        bean.findUserNameById("1");
+    }
+
 
 
     public static void main(String[] args) {
