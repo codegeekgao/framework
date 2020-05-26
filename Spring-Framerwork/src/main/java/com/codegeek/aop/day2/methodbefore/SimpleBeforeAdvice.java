@@ -14,5 +14,6 @@ public class SimpleBeforeAdvice implements MethodBeforeAdvice {
         System.out.println("执行的方法是：" + method.getName());
         System.out.println("执行的参数是：" + Arrays.asList(args));
         System.out.println("执行的对象是：" + target);
+        int i=10/0;
     }
 }

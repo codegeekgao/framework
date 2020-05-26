@@ -1,5 +1,8 @@
 package com.codegeek.aop.day2;
 
+import com.codegeek.aop.day2.afterReturning.SimpleAfterReturningAdvice;
+import com.codegeek.aop.day2.around.MessagePrinter;
+import com.codegeek.aop.day2.around.SimpleAroundAdvice;
 import com.codegeek.aop.day2.methodbefore.EmployeeService;
 import com.codegeek.aop.day2.methodbefore.SimpleBeforeAdvice;
 import org.junit.Test;
@@ -29,5 +32,25 @@ public class AdviceTest {
         // 获取代理对象
         EmployeeService proxy = (EmployeeService) proxyFactory.getProxy();
         System.out.println(proxy.getEmployeeName(1));
+    }
+
+    @Test
+    public void testAfterReturning() {
+        ProxyFactory proxyFactory = new ProxyFactory();
+        SimpleAfterReturningAdvice simpleAfterReturningAdvice = new SimpleAfterReturningAdvice();
+        proxyFactory.addAdvice(simpleAfterReturningAdvice);
+        proxyFactory.setTarget(applicationContext.getBean(EmployeeService.class));
+        EmployeeService proxy = (EmployeeService) proxyFactory.getProxy();
+        System.out.println(proxy.getEmployeeName(0));
+    }
+
+
+    @Test
+    public void testAround() {
+        ProxyFactory proxyFactory = new ProxyFactory();
+        proxyFactory.addAdvice(new SimpleAroundAdvice());
+        proxyFactory.setTarget(new MessagePrinter());
+        MessagePrinter proxy = (MessagePrinter) proxyFactory.getProxy();
+        proxy.print(1000000);
     }
 }
