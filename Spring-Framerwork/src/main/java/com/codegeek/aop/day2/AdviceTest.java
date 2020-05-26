@@ -5,6 +5,8 @@ import com.codegeek.aop.day2.around.MessagePrinter;
 import com.codegeek.aop.day2.around.SimpleAroundAdvice;
 import com.codegeek.aop.day2.methodbefore.EmployeeService;
 import com.codegeek.aop.day2.methodbefore.SimpleBeforeAdvice;
+import com.codegeek.aop.day2.throwexception.CalculateService;
+import com.codegeek.aop.day2.throwexception.SimpleThrowing;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.aop.framework.ProxyFactory;
@@ -52,5 +54,14 @@ public class AdviceTest {
         proxyFactory.setTarget(new MessagePrinter());
         MessagePrinter proxy = (MessagePrinter) proxyFactory.getProxy();
         proxy.print(1000000);
+    }
+
+    @Test
+    public void testThrowing() {
+        ProxyFactory proxyFactory = new ProxyFactory();
+        proxyFactory.addAdvice(new SimpleThrowing());
+        proxyFactory.setTarget(applicationContext.getBean(CalculateService.class));
+        CalculateService proxy = (CalculateService) proxyFactory.getProxy();
+        proxy.divide(5,0);
     }
 }
