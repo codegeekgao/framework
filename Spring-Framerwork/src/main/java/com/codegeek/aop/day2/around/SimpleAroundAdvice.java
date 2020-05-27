@@ -12,6 +12,7 @@ public class SimpleAroundAdvice implements MethodInterceptor {
 
     @Override
     public Object invoke(MethodInvocation invocation) throws Throwable {
+        System.out.println("\n" + "around...before...advice...start");
         StopWatch stopWatch = new StopWatch();
         System.out.println("\n" + "切点表达式：" + invocation.getStaticPart());
         System.out.println("开始计时类:" + invocation.getThis() + "的" + invocation.getMethod().getName() + "方法");

@@ -1,5 +1,6 @@
 package com.codegeek.aop.day2;
 
+import com.codegeek.aop.day2.after.SimpleAfterService;
 import com.codegeek.aop.day2.afterReturning.SimpleAfterReturningAdvice;
 import com.codegeek.aop.day2.around.MessagePrinter;
 import com.codegeek.aop.day2.around.SimpleAroundAdvice;
@@ -62,6 +63,21 @@ public class AdviceTest {
         proxyFactory.addAdvice(new SimpleThrowing());
         proxyFactory.setTarget(applicationContext.getBean(CalculateService.class));
         CalculateService proxy = (CalculateService) proxyFactory.getProxy();
-        proxy.divide(5,0);
+        proxy.divide(5, 0);
+    }
+    @Test
+    public void testAfter() {
+        ProxyFactory proxyFactory = new ProxyFactory();
+        proxyFactory.addAdvice(new SimpleAfterService());
+        proxyFactory.setTarget(applicationContext.getBean(CalculateService.class));
+        CalculateService proxy = (CalculateService) proxyFactory.getProxy();
+        proxy.divide(5, 6);
+    }
+
+
+    @Test
+    public void testAll() {
+        ProxyFactory proxyFactory = new ProxyFactory();
+        proxyFactory.addAdvice(new SimpleBeforeAdvice());
     }
 }

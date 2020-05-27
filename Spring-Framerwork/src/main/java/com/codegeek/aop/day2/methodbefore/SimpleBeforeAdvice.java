@@ -10,10 +10,10 @@ public class SimpleBeforeAdvice implements MethodBeforeAdvice {
 
     @Override
     public void before(Method method, Object[] args, Object target) throws Throwable {
-        System.out.println("\n" + "before......advice");
+        System.out.println("\n" + "before......advice....start");
         System.out.println("执行的方法是：" + method.getName());
         System.out.println("执行的参数是：" + Arrays.asList(args));
         System.out.println("执行的对象是：" + target);
-        int i=10/0;
+        System.out.println("\n" + "before......advice...end");
     }
 }
