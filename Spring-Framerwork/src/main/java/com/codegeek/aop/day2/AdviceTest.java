@@ -65,6 +65,7 @@ public class AdviceTest {
         CalculateService proxy = (CalculateService) proxyFactory.getProxy();
         proxy.divide(5, 0);
     }
+
     @Test
     public void testAfter() {
         ProxyFactory proxyFactory = new ProxyFactory();
@@ -78,6 +79,17 @@ public class AdviceTest {
     @Test
     public void testAll() {
         ProxyFactory proxyFactory = new ProxyFactory();
+        // 先添加环绕通知
+        proxyFactory.addAdvice(new SimpleAroundAdvice());
+        // 添加后置返回通知
+        proxyFactory.addAdvice(new SimpleAfterReturningAdvice());
+        // 添加前置通知
         proxyFactory.addAdvice(new SimpleBeforeAdvice());
+        // 添加异常通知
+        proxyFactory.addAdvice(new SimpleThrowing());
+        proxyFactory.setTarget(applicationContext.getBean(CalculateService.class));
+        CalculateService proxy = (CalculateService) proxyFactory.getProxy();
+        int add = proxy.add(1, 5);
+        System.out.println("计算的值：---------" + add);
     }
 }
