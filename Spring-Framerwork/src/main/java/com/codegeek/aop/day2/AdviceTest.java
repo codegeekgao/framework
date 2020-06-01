@@ -79,12 +79,13 @@ public class AdviceTest {
     @Test
     public void testAll() {
         ProxyFactory proxyFactory = new ProxyFactory();
+        // 添加前置通知
+        proxyFactory.addAdvice(new SimpleBeforeAdvice());
         // 先添加环绕通知
         proxyFactory.addAdvice(new SimpleAroundAdvice());
         // 添加后置返回通知
         proxyFactory.addAdvice(new SimpleAfterReturningAdvice());
-        // 添加前置通知
-        proxyFactory.addAdvice(new SimpleBeforeAdvice());
+
         // 添加异常通知
         proxyFactory.addAdvice(new SimpleThrowing());
         proxyFactory.setTarget(applicationContext.getBean(CalculateService.class));
