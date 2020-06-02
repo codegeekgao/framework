@@ -1,5 +1,6 @@
 package com.codegeek.aop.day1;
 
+import com.codegeek.aop.day3.pointcut.AdviceRequired;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -10,6 +11,7 @@ public class CalculatorImpl implements Calculator {
     }
 
     @Override
+    @AdviceRequired
     public int sub(int a, int b) {
         return a - b;
     }
