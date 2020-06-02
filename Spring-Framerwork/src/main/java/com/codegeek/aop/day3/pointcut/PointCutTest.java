@@ -62,7 +62,7 @@ public class PointCutTest {
         DefaultPointcutAdvisor advisor = new DefaultPointcutAdvisor(pointcut, new SimpleBeforeAdvice());
         ProxyFactory proxyFactory = new ProxyFactory();
         proxyFactory.addAdvisor(advisor);
-        proxyFactory.setTarget(new CalculatorImpl());
+        proxyFactory.setTarget(new CalculatorImpl());//12121
         Calculator proxy = (Calculator) proxyFactory.getProxy();
         System.out.println();
         int add = proxy.add(5, 5);
