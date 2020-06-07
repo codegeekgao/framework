@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import java.util.Arrays;
 
 @Component
-@Aspect
+//@Aspect
 @Order(1)
 public class OrderAspect {
 

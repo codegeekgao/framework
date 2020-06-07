@@ -1,6 +1,5 @@
 package com.codegeek.aop.day2.methodbefore;
 
-import org.springframework.aop.BeforeAdvice;
 import org.springframework.aop.MethodBeforeAdvice;
 
 import java.lang.reflect.Method;
