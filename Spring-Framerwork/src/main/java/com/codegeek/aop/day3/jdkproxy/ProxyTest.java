@@ -38,7 +38,6 @@ public class ProxyTest {
     @Test
     public void testCGLIB() {
         Enhancer enhancer = new Enhancer();
-        System.out.println();
         enhancer.setSuperclass(CalculatorImpl.class);
         enhancer.setCallback(new CalculatorCGLIBProxy());
         Calculator o = (Calculator) enhancer.create();
