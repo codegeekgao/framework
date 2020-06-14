@@ -63,7 +63,7 @@
 
     <bean id="messageSource"
           class="org.springframework.context.support.ResourceBundleMessageSource">
-        <property name="basename" value="day6.ApplicationResources" />
+        <property name="basename" value="ioc.day6.ApplicationResources" />
         <property name="useCodeAsDefaultMessage" value="true" />
     </bean>
 

@@ -3,8 +3,18 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
-  <!--  false使用jdk代理否则使用CGlib-->
-    <aop:aspectj-autoproxy proxy-target-class="true"/>
-    <context:component-scan base-package="com.codegeek.aop.day1"/>
+<!--  false使用jdk代理否则使用CGlib-->
+<aop:aspectj-autoproxy proxy-target-class="true"/>
+<context:component-scan base-package="com.codegeek.aop.day1"/>
 
+  <aop:config>
+    <aop:pointcut id="logPoint" expression="execution(* *..aop..*(..))"/>
+    <aop:aspect id="myAspect" ref="orderAspect">
+      <aop:before method="logStart" pointcut-ref="logPoint" arg-names="joinPoint"/>
+      <aop:after method="logEnd" pointcut-ref="logPoint" />
+      <aop:after-returning method="logRun" pointcut-ref="logPoint" returning="result"/>
+      <aop:after-throwing method="logException" pointcut-ref="logPoint" throwing="e"/>
+    </aop:aspect>
+  </aop:config>
+  <bean id="orderAspect" class="com.codegeek.aop.day1.OrderAspect"/>
 </beans>

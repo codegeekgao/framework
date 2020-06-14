@@ -1,9 +1,6 @@
 package com.codegeek.aop.day1.test;
 
-import com.codegeek.aop.day1.Calculator;
-import com.codegeek.aop.day1.CalculatorImpl;
-import com.codegeek.aop.day1.CalculatorProxy;
-import com.codegeek.aop.day1.LogAspect;
+import com.codegeek.aop.day1.*;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,6 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.lang.reflect.Proxy;
 @Slf4j
 @ContextConfiguration(locations = "classpath:aop/day1/*.xml")
+//@ContextConfiguration(classes = AOPConfig.class)
 @RunWith(SpringJUnit4ClassRunner.class)
 public class AopTest {
 

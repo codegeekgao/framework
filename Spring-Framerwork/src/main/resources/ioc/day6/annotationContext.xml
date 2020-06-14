@@ -12,7 +12,7 @@
                 <property name="ignoreUnresolvablePlaceholders" value="true" />
                 <property name="locations">
                         <list>
-                                <value>classpath:ioc/day6day6/jdbc.properties</value>
+                                <value>classpath:ioc/day6/jdbc.properties</value>
                         </list>
                 </property>
         </bean>

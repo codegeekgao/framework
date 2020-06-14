@@ -31,8 +31,9 @@ public class ComposableTest {
         proxyFactory.addAdvisor(advisor);
         proxyFactory.setTarget(applicationContext.getBean(ProductService.class));
         ProductService proxy = (ProductService) proxyFactory.getProxy();
+        // 或的关系
         pointcut.union(new FindMethodMatcher());
-        // 添加DeleteMethodMatcher
+        // 添加DeleteMethodMatcher 与的关系
         pointcut.intersection(new DeleteMethodMatcher());
         proxy.addProduct(new Product("iphone11","河南郑州",new BigDecimal(5700),"电子产品","apple"));
         proxy.addProduct(new Product("小米","广东深圳",new BigDecimal(3200),"电子产品","xiaomi"));
