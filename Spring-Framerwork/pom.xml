@@ -19,7 +19,7 @@
         <spring.version>5.2.5.RELEASE</spring.version>
         <jackson.version>2.10.1</jackson.version>
         <hibernate.version>5.4.10.Final</hibernate.version>
-        <jdbc.version>5.1.22</jdbc.version>
+        <jdbc.version>8.0.16</jdbc.version>
     </properties>
 
     <dependencies>
