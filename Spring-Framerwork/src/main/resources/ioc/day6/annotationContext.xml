@@ -25,8 +25,6 @@
                 <property name="password" value="${jdbc.password}"/>
         </bean>
 
-
-
         <!--工厂类对象  本地容器实力管理工厂对象-->
         <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
                 <property name="dataSource" ref="dataSource"/>      <!--引用数据源-->
@@ -44,7 +42,8 @@
         </bean>
         <!--配置事务    jpa事务管理-->
         <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-                <property name="entityManagerFactory" ref="entityManagerFactory"/>   <!--引用工厂对象-->
+                <property name="entityManagerFactory" ref="entityManagerFactory"/>
+                <property name="dataSource" ref="dataSource"/>  <!--引用工厂对象-->
         </bean>
         <!--事务驱动-->
         <tx:advice id="txAdvice" transaction-manager="transactionManager">
@@ -55,14 +54,21 @@
                 </tx:attributes>
         </tx:advice>
 
-        <!--配置切面-->
-        <aop:config>
-                <aop:pointcut id="pointcut" expression="execution(* com.codegeek.ioc.day6.service.*.*(..))"/>
+        <!--&lt;!&ndash;配置切面&ndash;&gt;-->
+      <aop:config>
+                <!--&lt;!&ndash;() 匹配一个不接受任何参数的方法&ndash;&gt;-->
+                <!--&lt;!&ndash;(..) 匹配一个接受任意数量参数的方法&ndash;&gt;-->
+                <!--&lt;!&ndash;(*) 匹配了一个接受一个任何类型的参数的方法&ndash;&gt;-->
+                <!--&lt;!&ndash;(*,String) 匹配了一个接受两个参数的方法，其中第一个参数是任意类型，第二个参数必须是String类型&ndash;&gt;-->
+                <aop:pointcut id="pointcut" expression="execution(* *..service.impl.*(..))"/>
                 <aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut"/>
-        </aop:config>
+
+    </aop:config>
         <!--dao层-->
         <jpa:repositories base-package="com.codegeek.ioc.day6.dao"
                           transaction-manager-ref="transactionManager"
                           entity-manager-factory-ref="entityManagerFactory"
         />
+        <!--@EnableTransactionManagement-->
+        <tx:annotation-driven transaction-manager="transactionManager"/>
 </beans>

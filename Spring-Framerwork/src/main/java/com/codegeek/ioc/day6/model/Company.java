@@ -59,8 +59,13 @@ public class Company {
         employee2.setCompany(company);
 
         company.setEmployees(Arrays.asList(employee1,employee2));
-        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL); //属性为NULL不序列化
-        System.out.println(objectMapper.writeValueAsString(company));
+        // key为null的元素不进行序列化
+        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        String s = objectMapper.writeValueAsString(company);
+        System.out.println(s);
+        // TODO 循环数据如何进行读取？
+        Company value = objectMapper.readValue(s, Company.class);
+        System.out.println(value);
     }
 
 }
