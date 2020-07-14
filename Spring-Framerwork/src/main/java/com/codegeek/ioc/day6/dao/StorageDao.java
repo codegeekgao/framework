@@ -18,7 +18,7 @@ public interface StorageDao extends JpaRepository<Storage,Integer> {
 
     @Modifying
     @Transactional
-    @Query(value = "update t_storage1  set storage_number=storage_number-:storageNumber where id=:id",nativeQuery = true)
+    @Query(value = "update t_storage  set storage_number=storage_number-:storageNumber where id=:id",nativeQuery = true)
     void updateStorage(@Param("id") Integer id, @Param("storageNumber") Integer storageNumber) throws Exception;
 
 }

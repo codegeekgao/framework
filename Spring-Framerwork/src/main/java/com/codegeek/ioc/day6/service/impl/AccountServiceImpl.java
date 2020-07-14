@@ -40,6 +40,7 @@ public class AccountServiceImpl implements AccountService {
         try {
             Product product = productDao.findPriceByProductName(productName);
             accountDao.updateBalance(user,BigDecimal.valueOf(buyCount).multiply(product.getPrice()));
+            System.out.println(1/0);
             storageDao.updateStorage(product.getStorage().getId(),buyCount);
         } catch (Exception e) {
             e.printStackTrace();
