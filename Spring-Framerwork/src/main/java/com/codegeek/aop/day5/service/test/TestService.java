@@ -8,6 +8,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import javax.transaction.Transactional;
+
 /**
  * @author CodeGeekGao
  * @version Id: TestService.java, v 1.0 2020/7/11 11:29 AM CodeGeekGao
@@ -20,6 +22,7 @@ public class TestService {
     private ApplicationContext applicationContext;
 
     @Test
+
     public void test() {
         BuyService buyService = applicationContext.getBean(BuyService.class);
         buyService.buy("小明","Java编程入门",10L);

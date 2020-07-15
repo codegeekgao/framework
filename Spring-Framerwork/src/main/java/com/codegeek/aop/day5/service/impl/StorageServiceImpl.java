@@ -4,6 +4,8 @@ import com.codegeek.aop.day5.service.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author CodeGeekGao
@@ -21,7 +23,9 @@ public class StorageServiceImpl implements StorageService {
      * @param number number
      */
     @Override
+    @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
     public void decreaseStorage(Integer id, Long number) {
+
         String sql="update t_storage1 set storage_number=storage_number-? where id=?";
         jdbcTemplate.update(sql,number,id);
     }

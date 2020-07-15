@@ -3,6 +3,8 @@ package com.codegeek.aop.day5.service.impl;
 import com.codegeek.aop.day5.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 
@@ -20,6 +22,7 @@ public class BuyServiceImpl implements BuyService {
     @Autowired
     private StorageService storageService;
 
+    @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class,timeout = 2)
     public void buy(String userName,String productName,Long buyCount) {
         Product productItem = productService.findProductPrice(productName);
         if(productItem==null) throw new RuntimeException("该产品不存在");

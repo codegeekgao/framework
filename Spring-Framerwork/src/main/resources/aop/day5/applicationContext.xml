@@ -26,22 +26,25 @@
         <!--&lt;!&ndash;(*) 匹配了一个接受一个任何类型的参数的方法&ndash;&gt;-->
         <!--&lt;!&ndash;(*,String) 匹配了一个接受两个参数的方法，其中第一个参数是任意类型，第二个参数必须是String类型&ndash;&gt;-->
         <!--匹配包含aop包下包含impl包下的任意类的任意方法-->
-        <aop:config>
-                <aop:pointcut id="pointcut" expression="execution(* *..aop..impl.*.*(..))"/>
-                <aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut"/>
-        </aop:config>
+        <!--<aop:config>-->
+                <!--<aop:pointcut id="pointcut" expression="execution(* *..aop..impl.*.*(..))"/>-->
+                <!--<aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut"/>-->
+        <!--</aop:config>-->
 
-        <!--事务驱动-->
-        <tx:advice id="txAdvice" transaction-manager="transactionManager">
-                <tx:attributes>
-                        <tx:method name="get*" read-only="true"/>
-                        <tx:method name="find*" read-only="true"/>
-                        <tx:method name="*" />
-                </tx:attributes>
-        </tx:advice>
+        <!--&lt;!&ndash;事务驱动&ndash;&gt;-->
+        <!--<tx:advice id="txAdvice" transaction-manager="transactionManager">-->
+                <!--<tx:attributes>-->
+                        <!--<tx:method name="get*" read-only="true"/>-->
+                        <!--<tx:method name="find*" read-only="true"/>-->
+                        <!--<tx:method name="*" />-->
+                <!--</tx:attributes>-->
+        <!--</tx:advice>-->
 
         <!--配置transactionManager事务管理器-->
         <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
                 <property name="dataSource" ref="dataSource"/>
         </bean>
+
+        <!--@EnableTransactionManagement-->
+        <tx:annotation-driven transaction-manager="transactionManager"/>
 </beans>
