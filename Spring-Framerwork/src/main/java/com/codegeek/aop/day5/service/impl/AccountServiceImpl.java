@@ -24,7 +24,7 @@ public class AccountServiceImpl implements AccountService {
      * @param accountName accountName
      * @param price price
      */
-    @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
+    @Transactional(propagation = Propagation.REQUIRES_NEW,rollbackFor = Exception.class)
     public void updateBalance(String accountName, BigDecimal price) {
         String sql= "update t_account set balance=balance-? where account_name=?";
         jdbcTemplate.update(sql,price,accountName);
@@ -32,7 +32,6 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public BigDecimal findAccountBalance(String accountName) {
-
         String sql ="select balance from t_account where account_name =?";
         return jdbcTemplate.queryForObject(sql,BigDecimal.class,accountName);
     }

@@ -23,10 +23,9 @@ public class StorageServiceImpl implements StorageService {
      * @param number number
      */
     @Override
-    @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
+    @Transactional(propagation = Propagation.NESTED,rollbackFor = Exception.class)
     public void decreaseStorage(Integer id, Long number) {
-
-        String sql="update t_storage1 set storage_number=storage_number-? where id=?";
+        String sql="update t_storage  set storage_number=storage_number-? where id=?";
         jdbcTemplate.update(sql,number,id);
     }
 

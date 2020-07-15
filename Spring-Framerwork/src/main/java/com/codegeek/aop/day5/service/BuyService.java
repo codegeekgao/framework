@@ -12,5 +12,5 @@ import java.math.BigDecimal;
  */
 public interface BuyService {
 
-    void buy(String userName,String productName,Long buyCount);
+    void buy(String userName,String productName,Long buyCount) throws Exception;
 }

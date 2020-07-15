@@ -22,9 +22,12 @@ public class TestService {
     private ApplicationContext applicationContext;
 
     @Test
-
     public void test() {
         BuyService buyService = applicationContext.getBean(BuyService.class);
-        buyService.buy("小明","Java编程入门",10L);
+        try {
+            buyService.buy("小明","Java编程入门",10L);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
